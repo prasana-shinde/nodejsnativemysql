@@ -9,17 +9,16 @@ function mulBy2(x) {
   }); 
 } 
 
-async function output(val){
+async function output(req,res,val){
   const op = await mulBy2(val)
-  console.log(op);
+  res.json({
+    'value':op
+  })
 }
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  output(50);
-  res.json({
-    'message':'async initiated'
-  })
+  output(req,res,60);
 });
 
 router.get('/getme', function(req, res, next) {
