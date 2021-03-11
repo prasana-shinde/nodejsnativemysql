@@ -1,19 +1,46 @@
 var express = require('express');
 var router = express.Router();
 
-const {saveUserService} = require('../service/v1/user/user');
+const {saveUserService,readUserService,updateUserService,deleteUserService} = require('../service/v1/user/user');
 
-
-/* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('in user');
+  console.log(req.body);
+  readUserService(req.body)
+  .then((data)=>{
+    res.send({data : data});
+  })
+  .catch((err)=>{
+    res.send(err);
+  })
 });
 
-router.post('/save',(req,res)=>{
+router.post('/',(req,res)=>{
   console.log(req.body);
   saveUserService(req.body)
   .then((data)=>{
-    res.send(data);
+    res.send({data : data});
+  })
+  .catch((err)=>{
+    res.send(err);
+  })
+})
+
+router.put('/',(req,res)=>{
+  console.log(req.body);
+  updateUserService(req.body)
+  .then((data)=>{
+    res.send({data : data});
+  })
+  .catch((err)=>{
+    res.send(err);
+  })
+})
+
+router.delete('/',(req,res)=>{
+  console.log(req.body);
+  deleteUserService(req.body)
+  .then((data)=>{
+    res.send({data : data});
   })
   .catch((err)=>{
     res.send(err);

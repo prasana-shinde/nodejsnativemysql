@@ -6,7 +6,7 @@ const user = sequelize.define('user', {
     password: Sequelize.STRING
 });
 
-user.sync({force : true}).then(()=>{
+user.sync().then(()=>{
     console.log("*** user table created ***");
 });
 
