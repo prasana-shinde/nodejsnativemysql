@@ -1,25 +1,24 @@
 var express = require('express');
 var router = express.Router();
 
-function mulBy2(x) { 
-  return new Promise((resolve) => { 
-      setTimeout(() => { 
-          resolve(x*2); 
-      }, 2000); 
-  }); 
-} 
+const {saveUserService} = require('../service/v1/user/user');
 
-async function output(req,res,val){
-  const op = await mulBy2(val)
-  res.json({
-    'value':op
-  })
-}
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  output(req,res,60);
+  res.send('in user');
 });
+
+router.post('/save',(req,res)=>{
+  console.log(req.body);
+  saveUserService(req.body)
+  .then((data)=>{
+    res.send(data);
+  })
+  .catch((err)=>{
+    res.send(err);
+  })
+})
 
 router.get('/getme', function(req, res, next) {
   res.send('respond with a getme');
