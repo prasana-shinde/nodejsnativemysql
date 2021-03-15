@@ -7,7 +7,7 @@ const user = sequelize.define('user', {
 });
 
 user.sync().then(()=>{
-    console.log("*** user table created ***");
+    console.log("***user table created***");
 });
 
 module.exports = user;
