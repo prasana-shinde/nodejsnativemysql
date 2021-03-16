@@ -1,11 +1,11 @@
-const user = require('../../models').user;
+const post = require('../../models').post;
 
 class Save {
-    saveUser(body){
+    savePost(body){
         return new Promise((resolve, reject) => {  
-            user.create({
-                user_name : body.user_name,
-                password : body.password
+            post.create({
+                message : body.message,
+                user_id : body.userid
             }).then((data)=>{
                 resolve(data)
             }).catch((err)=>{

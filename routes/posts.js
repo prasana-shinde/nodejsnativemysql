@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-const {saveUserService,readUserService,updateUserService,deleteUserService} = require('../service/v1/user/user');
+const {savePostService,readPostService,updatePostService,deletePostService} = require('../service/v1/post/post');
 
 router.get('/', function(req, res, next) {
   console.log(req.query);
-  readUserService(req.query)
+  readPostService(req.query)
   .then((data)=>{
     res.send({data : data});
   })
@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/',(req,res)=>{
   console.log(req.body);
-  saveUserService(req.body)
+  savePostService(req.body)
   .then((data)=>{
     res.send({data : data});
   })
@@ -27,7 +27,7 @@ router.post('/',(req,res)=>{
 
 router.put('/',(req,res)=>{
   console.log(req.body);
-  updateUserService(req.body)
+  updatePostService(req.body)
   .then((data)=>{
     res.send({data : data});
   })
@@ -38,7 +38,7 @@ router.put('/',(req,res)=>{
 
 router.delete('/',(req,res)=>{
   console.log(req.body);
-  deleteUserService(req.body)
+  deletePostService(req.body)
   .then((data)=>{
     res.send({data : data});
   })

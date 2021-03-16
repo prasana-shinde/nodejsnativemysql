@@ -1,7 +1,7 @@
 const save = require("../../../core/user/save");
-const read = require("../../../core/user/read");
+const read = require("../../../core/user/find");
 const update = require("../../../core/user/update");
-const destroy = require("../../../core/user/destroy");
+const destroy = require("../../../core/user/delete");
 
 const {saveUser} = new save.SaveClass();
 const {readUser} = new read.ReadClass();

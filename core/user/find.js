@@ -1,15 +1,10 @@
 const user = require('../../models').user;
 
-class Update {
-    updateUser(body){
+class Read {
+    readUser(body){
         return new Promise((resolve, reject) => {  
-            user.update({
-                user_name : body.new_user_name
-            },
-            {
-                where : {
-                    user_name : body.user_name
-                }
+            user.findAll({
+                offset: parseInt(body.offset) , limit: parseInt(body.limit)
             }).then((data)=>{
                 resolve(data)
             }).catch((err)=>{
@@ -20,5 +15,5 @@ class Update {
 }
 
 module.exports = {
-    UpdateClass : Update
+    ReadClass : Read
 }

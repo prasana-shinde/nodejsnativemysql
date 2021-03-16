@@ -1,11 +1,14 @@
-const user = require('../../models/user');
+const post = require('../../models').post;
 
-class Destroy {
-    deleteUser(body){
+class Update {
+    updatePost(body){
         return new Promise((resolve, reject) => {  
-            user.destroy({
+            post.update({
+                message : body.message
+            },
+            {
                 where : {
-                    username : body.username
+                    id : body.postid
                 }
             }).then((data)=>{
                 resolve(data)
@@ -17,5 +20,5 @@ class Destroy {
 }
 
 module.exports = {
-    DestroyClass : Destroy
+    UpdateClass : Update
 }

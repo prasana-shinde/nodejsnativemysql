@@ -1,10 +1,10 @@
-const user = require('../../models/user');
+const post = require('../../models').post;
 
 class Read {
-    readUser(body){
+    readPost(body){
         return new Promise((resolve, reject) => {  
-            user.findAll({
-                offset: body.offset , limit: body.limit 
+            post.findAll({
+                offset: parseInt(body.offset) , limit: parseInt(body.limit) 
             }).then((data)=>{
                 resolve(data)
             }).catch((err)=>{
