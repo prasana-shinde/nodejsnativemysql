@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -19,13 +19,5 @@
   "main": "app.js",
   "author": "prasana shinde",
   "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/prasana-shinde/trial.git"
-  },
-  "bugs": {
-    "url": "https://github.com/prasana-shinde/trial/issues"
-  },
-  "homepage": "https://github.com/prasana-shinde/trial#readme",
   "description": ""
 }

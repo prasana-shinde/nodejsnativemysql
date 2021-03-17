@@ -1,15 +1,15 @@
-const user = require('../../models').user;
-
+const mysql = require('../../config/mysql')
 class Save {
     saveUser(body){
         return new Promise((resolve, reject) => {  
-            user.create({
-                user_name : body.user_name,
-                password : body.password
-            }).then((data)=>{
-                resolve(data)
-            }).catch((err)=>{
-                reject(err)
+            const prepared_statement = 'insert into user values(?,?)';        //prepared statement to insert data into user table
+            mysql.query(prepared_statement,[body.user_name,body.password],(err,result)=>{
+                if(err){
+                    reject(err)
+                }
+                else{
+                    resolve(result)
+                }
             });
         });
     }
